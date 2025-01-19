@@ -5,6 +5,7 @@ import { LINKS } from "../lib/constants";
 import { Icon } from 'astro-icon/components'
 import Tooltip from "./Tooltip/index";
 import { Image } from "astro:assets";
+import Flipimage from "./flipimage.astro";
 let welcomeText: string = "Welcome";
 ---
 
@@ -18,8 +19,7 @@ let welcomeText: string = "Welcome";
         <h6 class="text-sm font-light m-0 text-gray-500 welcome-text">{welcomeText}</h6>
         <p class="m-0 font-light text-xl">
           Hi, I'm <b class="font-bold">Shurgbee</b>, a software
-          developer with strong focus on the user experience, animations and
-          micro interactions
+          developer who loves to explore new technologies and create innovative apps.
         </p>
       </div>
       <div class="flex gap-4">
@@ -43,19 +43,30 @@ let welcomeText: string = "Welcome";
         </a>
         <Tooltip client:visible>
           <Button aria-label="easter egg btn">
-            <Icon name="ri:emotion-laugh-line" class="h-6" />
+            <Icon name="ri:brain-line" class="h-6" />
             <span class="sr-only">Easter egg button</span>
           </Button>
         </Tooltip>
       </div>
     </div>
+    <Flipimage>
     <Image
+      slot="front"
       width="300"
       height="300"
       src="/shurgbeeicon.webp"
       class="w-auto max-h-[300px] select-none absolute right-[-110px] bottom-[-20px] z-[-1] opacity-50 md:opacity-100 md:relative md:right-auto md:bottom-auto md:z-auto pointer-events-none rounded-full"
+      alt="shurgbee loco with text"
+    />
+    <Image
+      slot="back"
+      width="300"
+      height="300"
+      src="/realpfp.webp"
+      class="w-auto max-h-[300px] select-none absolute right-[-110px] bottom-[-20px] z-[-1] opacity-50 md:opacity-100 md:relative md:right-auto md:bottom-auto md:z-auto pointer-events-none rounded-full"
       alt="shurgbee's profile picture"
     />
+    </Flipimage>
   </div>
 </Card>
 <script>

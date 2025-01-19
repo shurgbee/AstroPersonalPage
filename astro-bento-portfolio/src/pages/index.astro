@@ -6,6 +6,7 @@ import ContactsCard from "../components/ContactsCard.astro";
 import TimeZone from "../components/TimeZoneCard.astro";
 import AboutMe from "../components/AboutMe.astro";
 import Now from "../components/Now.astro";
+import FlippedCard from "../components/Card/flip.astro";
 import Globe from "../components/Globe";
 import { getCollection } from "astro:content";
 import { formatDate } from "../lib/helpers";
@@ -50,18 +51,13 @@ const posts = (await getCollection("blog"))?.sort(
     <AboutMe />
     <ContactsCard />
     <TimeZone />
-    <Now />
-    <Card
+    <FlippedCard
       colSpan="md:col-span-1"
-      rowSpan="md:row-span-1"
-      title="Countries I visited"
-      href="travel"
-      colorText="text-neutral-900"
-    >
-      <div class="h-full w-full absolute inset-0 -z-10">
-        <Globe client:load />
-      </div>
-    </Card>
+      rowSpan="md:row-span-1">
+      <p slot="front" class="bold center">What I'm listening to rn</p>
+    <iframe  style="" slot="back" title="spotify embed" src="https://open.spotify.com/embed/track/6Y7SslHFxMnUTAXqbQkAAN?utm_source=generator&theme=0" width="100%" height="md:row-span-1" frameBorder="" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> 
+    </FlippedCard> 
+    <!-- <Now /> -->
     <Card
       colSpan="md:col-span-1"
       rowSpan="md:row-span-2 flex gap-4"
