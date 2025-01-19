@@ -23,6 +23,7 @@ const schema =
         name: "Sragvee",
         url: Astro.url.origin,
         sameAs: [LINKS.linkedin, LINKS.github],
+        //TODO: MUST CHANGE ALL REFERENCES TO OG-IMAGE
         image: `${Astro.url.origin}/og-image.png`,
         jobTitle: "Freelance Software Developer",
         worksFor: {
@@ -30,13 +31,13 @@ const schema =
           name: "Self-Employed",
           address: {
             "@type": "PostalAddress",
-            addressLocality: "Italy",
-            addressCountry: "IT",
+            addressLocality: "United States of America",
+            addressCountry: "US",
           },
         },
         nationality: {
           "@type": "Country",
-          name: "Italy",
+          name: "United States of America",
         },
       }
     : {

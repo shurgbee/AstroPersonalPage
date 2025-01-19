@@ -13,7 +13,7 @@ export function getDallasTime(): Date {
   return now;
 }
 
-export function formatTimeForItaly(date: Date): string {
+export function formatTimeForUS(date: Date): string {
   const options: Intl.DateTimeFormatOptions = {
     hour: "numeric",
     minute: "2-digit",
@@ -24,8 +24,6 @@ export function formatTimeForItaly(date: Date): string {
 
   let formattedTime = new Intl.DateTimeFormat("en-US", options).format(date);
 
-  // Append the time zone abbreviation. You can automate this with libraries like `moment-timezone`.
-  // For simplicity, here I'm just appending "CET", but do remember that Italy switches between CET and CEST.
   formattedTime += " CT";
 
   return formattedTime;
