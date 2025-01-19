@@ -1,0 +1,42 @@
+---
+import Card from "./Card/index.astro";
+import { Icon } from "astro-icon/components";
+---
+
+
+<Card colSpan="md:col-span-1" rowSpan="md:row-span-6" title="About me">
+  <div class="flex flex-col gap-2">
+    <div class="text-m font-light">
+      <style>
+        @keyframes rotate{
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        li:hover{
+         font-weight: bold;
+        }
+        .inline:hover{
+          animation: rotate 1s ease infinite backwards;
+        }
+      </style>
+      <p class="text-m">
+        Hi, I'm Sragvee, a software developer from Dallas.
+        <br />
+        My primary tools of choice includes:
+      </p>
+      <ul class="list-disc list-inside">
+        <li>JavaScript <Icon name="devicon:javascript" class="inline" /></li>
+        <li>React <Icon name="devicon:react" class="inline"/></li>
+        <li>Unity <Icon name="devicon:unity" class="inline" /></li>
+        <li>Astro.js <Icon name="devicon:astro" class="inline" /></li>
+        <li>Next.js <Icon name="devicon:nextjs" class="inline" /></li>
+        <li>Python <Icon name="devicon:python" class="inline" /> </li>
+      </ul>
+    </div>
+    <p class="text-m font-light">
+      Beyond coding, I'm passionate about design, illustration, animation and 3D modelling and traveling.
+      An unusual hobby of mine is collecting vintage passports, they're
+      interesting pieces of history to me.
+    </p>
+  </div>
+</Card>
