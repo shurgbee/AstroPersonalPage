@@ -8,6 +8,7 @@ const posts = (await getCollection("blog"))?.sort(
     (blogEntryB.data.pubDate || new Date()).getTime() -
     (blogEntryA.data.pubDate || new Date()).getTime()
 );
+const projects = [...new Set(posts?.map((post) => post.data.project))]; 
 ---
 
 <script>
@@ -31,17 +32,33 @@ const posts = (await getCollection("blog"))?.sort(
       class="text-white bg-neutral-900 hover:bg-neutral-800 px-4 py-2 mb-8 border-1 border-solid border-neutral-600 rounded-lg"
       >Back</a
     >
-    <h1 class="text-4xl font-bold mb-4 text-neutral-100">Posts</h1>
-    <ul class="w-full">
-      {
-        posts?.map((post) => (
-          <PostRow
-            title={post.data.title || "No title"}
-            date={post.data.pubDate || new Date()}
-            id={post.id}
-          />
-        ))
-      }
+    <h1 class="text-4xl font-bold mb-4 text-neutral-100">Projects</h1>
+    {projects.map((project) => (
+      <h2 id={project} class="text-3xl font-bold mb-4 text-neutral-100 projects">{project}</h2>
+
+      <ul class="w-full">
+        {
+          posts?.map((post) => ( 
+            post.data.project === project ?
+            <PostRow
+              title={post.data.title || "No title"}
+              date={post.data.pubDate || new Date()}
+              id={post.id}
+            /> : null
+          ))
+        }
     </ul>
+    ))}
+  <style>
+  .projects:target {
+    animation: flash 1s;
+  }
+  @keyframes flash {
+    from { background-color: #f5f5f5; font-color: #111111; }
+    to { 
+      background-color: inherit;
+      font-color: inherit; }
+  }
+  </style>
   </main>
 </Layout>

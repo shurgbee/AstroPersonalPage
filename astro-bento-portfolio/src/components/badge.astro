@@ -1,0 +1,11 @@
+---
+interface Props {
+    linkto?: string;
+}
+
+const { linkto } = Astro.props;
+---
+
+<div class="inline bg-neutral-900 hover:bg-neutral-800 px-2 py-0.9 border-1 border-solid border-blue-600 rounded-lg ml-2 mb-8">
+    {linkto ? <a class="text-white" href={linkto}><slot/></a> : <slot/>}
+    </span>

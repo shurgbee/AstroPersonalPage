@@ -32,7 +32,22 @@ export function formatTimeForUS(date: Date): string {
 export function formatDate(date: Date): string {
   return date.toLocaleDateString("en-US", {
     year: "numeric",
-    month: "long",
+    month: "numeric",
     day: "numeric",
   });
 }
+
+export async function getSpotifyCurrentlyListeningSong(): Promise<string>{
+  const response = await fetch("https://api.spotify.com/v1/me/player/currently-playing", {
+    headers: {
+      Authorization: `Bearer ${process.env.SPOTIFY_ACCESS_TOKEN}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data.item.name;
+};

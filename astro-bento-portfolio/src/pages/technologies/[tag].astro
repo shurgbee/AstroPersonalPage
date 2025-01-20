@@ -10,7 +10,7 @@ export async function getStaticPaths() {
     params: { id: id as string },
   }));
 }
-
+const uniqueTechnologies = new Set();
 const { id } = Astro.params;
 
 if (!id) {

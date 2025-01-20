@@ -20,12 +20,15 @@ const { title, date, id } = Astro.props;
     <p class="inline-block whitespace-nowrap">
       {title}
     </p>
+    <div class="w full text-right">
     <time
       class="text-right tabular-nums"
       datetime={date.toISOString()}
       data-date={date.toISOString()}
+      style="text-align: right;"
     >
       {formatDate(date)}
     </time>
+    </div>
   </a>
 </li>

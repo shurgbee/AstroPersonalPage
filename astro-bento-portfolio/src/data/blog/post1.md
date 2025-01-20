@@ -4,6 +4,8 @@ description: "this is a post example"
 pubDate: 2023-01-21
 category: "intro"
 draft: false
+project: "Gooba"
+technologies: ["Astro.js","Javascript"]
 ---
 
 # Hi there!

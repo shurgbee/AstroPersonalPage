@@ -51,12 +51,6 @@ const posts = (await getCollection("blog"))?.sort(
     <AboutMe />
     <ContactsCard />
     <TimeZone />
-    <FlippedCard
-      colSpan="md:col-span-1"
-      rowSpan="md:row-span-1">
-      <p slot="front" class="bold center">What I'm listening to rn</p>
-    <iframe  style="" slot="back" title="spotify embed" src="https://open.spotify.com/embed/track/6Y7SslHFxMnUTAXqbQkAAN?utm_source=generator&theme=0" width="100%" height="md:row-span-1" frameBorder="" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> 
-    </FlippedCard> 
     <!-- <Now /> -->
     <Card
       colSpan="md:col-span-1"
@@ -67,10 +61,10 @@ const posts = (await getCollection("blog"))?.sort(
       <div class="flex flex-col gap-4">
         {
           posts?.slice(0, 3).map((post) => (
-            // <a
-            //   class="text-sm md:text-base decoration-none flex justify-between"
-            //   href={`/blog/${post.id}`}
-            // >
+            <a
+              class="text-sm md:text-base decoration-none flex justify-between"
+              href={`/blog/${post.id}`}
+            >
             <div class="list-none w-full text-neutral-100 hover:text-neutral-400 ease-in-out transition-colors border-b-neutral-400 border-dashed border-b-1 my-0">
               <p class="inline-block whitespace-nowrap text-xs">
                 {post.data.title}
@@ -85,11 +79,17 @@ const posts = (await getCollection("blog"))?.sort(
                 </time>
               )}
             </div>
-            // </a>
+            </a>
           ))
         }
       </div>
     </Card>
+    <FlippedCard
+      colSpan="md:col-span-2"
+      rowSpan="md:row-span-1">
+      <p slot="front" class="bold center">What I'm listening to rn</p>
+    <iframe priority={true} slot="back" title="spotify embed" src="https://open.spotify.com/embed/track/6Y7SslHFxMnUTAXqbQkAAN?utm_source=generator&theme=0" width="100%" height="md:row-span-2" frameBorder="" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> 
+    </FlippedCard> 
     <Card colSpan="md:col-span-1" rowSpan="md:row-span-1">
       <p class="text-xs">
         © {new Date().getFullYear()} · Built with 
