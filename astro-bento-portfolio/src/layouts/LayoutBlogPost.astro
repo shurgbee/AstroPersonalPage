@@ -35,9 +35,9 @@ const { title, description, pubDate, minutesRead, url, project, technologies } =
         <Badge linkto={`/blog/#${project}`}>{project}</Badge>
       </div>
       <div class="mb-4">
-        Technologies:
+        Tags:
         {technologies.map((x) =>
-        <Badge linkto={`/`}>{x}</Badge>)}
+        <Badge linkto={`/tags/${x}`}>{x}</Badge>)}
       </div>
     </div>
     <article class="prose prose-p:text-red-500 prose-slate prose-invert">

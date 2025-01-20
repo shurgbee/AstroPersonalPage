@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+---
+
+<script>
+  import { timeline, type TimelineDefinition } from "motion";
+  import { loaderAnimation } from "../lib/constants";
+
+  const sequence = [loaderAnimation];
+
+  timeline(sequence as TimelineDefinition);
+</script>
+
+<Layout
+  title="Sragvee Satluri - Blog"
+  description="Software developer who loves to mess with code and create innovative apps."
+>
+    <h1 class="text-4xl font-bold mb-4 text-neutral-100">Whoops! Looks like you're not supposed to be here</h1>
+    <a href='/' aria-label="return button"> 
+        <Button aria-label="return button">
+            Let's Get You Back
+        </Button>
+    </a>
+</Layout>

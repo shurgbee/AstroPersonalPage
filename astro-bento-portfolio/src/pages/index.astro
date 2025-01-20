@@ -88,7 +88,7 @@ const posts = (await getCollection("blog"))?.sort(
       colSpan="md:col-span-2"
       rowSpan="md:row-span-1">
       <p slot="front" class="bold center">What I'm listening to rn</p>
-    <iframe priority={true} slot="back" title="spotify embed" src="https://open.spotify.com/embed/track/6Y7SslHFxMnUTAXqbQkAAN?utm_source=generator&theme=0" width="100%" height="md:row-span-2" frameBorder="" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> 
+    <iframe slot="back" title="spotify embed" src="https://open.spotify.com/embed/track/6Y7SslHFxMnUTAXqbQkAAN?utm_source=generator&theme=0" width="100%" height="md:row-span-1" frameborder={100} allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> 
     </FlippedCard> 
     <Card colSpan="md:col-span-1" rowSpan="md:row-span-1">
       <p class="text-xs">
