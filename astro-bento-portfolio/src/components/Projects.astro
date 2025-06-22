@@ -5,7 +5,6 @@ import { LINKS } from "../lib/constants";
 import { getCollection } from "astro:content";
 
 const projects = (await getCollection("project"))
-projects.map((project) => console.log(project.data.name))
 ---
 
 <style>
@@ -28,7 +27,12 @@ scrollbar-width: none;
       </h1>
     </header>
     <div class="grid grid-cols-1 gap-3">
-      {projects.map((project) => <ProjectsCard name={project.data.name} ></ProjectsCard>)}
+      {projects.map((project) => <ProjectsCard name={project.data.name} 
+      github={project.data.github} 
+      link={project.data.link} 
+      technologies={project.data.technologies}>
+        {project.body}
+      </ProjectsCard>)}
     </div>
   </div>
 </Card>

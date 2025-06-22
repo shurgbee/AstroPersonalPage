@@ -1,18 +1,37 @@
 ---
 import Card from "../Card/index.astro";
+import { Icon } from "astro-icon/components";
+import Badge from "../badge.astro";
 
 interface Props {
     link?: string;
     name: string;
     github?: string;
+    technologies?: Array<string>
     blurb?: string;
 }
 
-const {link, name, blurb, github} = Astro.props
+const {link, name, blurb, github, technologies} = Astro.props
 ---
 
 <Card colSpan="md:col-span-1" rowSpan="md:row-span-8">
-<div class="flex-wrap ">
-    <h1 class="font-bold">{name}</h1>  
+<div class="flex place-items-center">
+    { github && 
+    <a href={github} target="_blank" aria-label={"github link for " + name}>
+        <Icon name="ri:github-fill" class="text-3xl"/>
+    </a>
+    } 
+    { link && 
+    <a href={link} target="_blank" aria-label={"link for " + name} class="pl-1">
+        <Icon name="ri:link" class="text-3xl"/>
+    </a>
+    } 
+    <h1 class="font-bold text-3xl pl-1">{name}</h1>
 </div>
+<p><slot/></p>
+{technologies &&
+<div class="inline-flex items-center flex-wrap">
+    {technologies.map((technology) => <Badge>{technology}</Badge>)}
+</div>
+}
 </Card>
