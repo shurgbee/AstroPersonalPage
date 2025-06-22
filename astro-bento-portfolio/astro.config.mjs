@@ -19,7 +19,8 @@ export default defineConfig({
     sitemap(),
     robotsTxt({
       sitemap: [
-        // UPDATE LATER
+        
+        // TODO: UPDATE LATER
         "https://gianmarcocavallo.com/sitemap-index.xml",
         "https://gianmarcocavallo.com/sitemap-0.xml",
       ],
@@ -33,7 +34,7 @@ export default defineConfig({
     remarkPlugins: [remarkReadingTime],
   },
   output: "server",
-  adapter: cloudflare(),
+  adapter: cloudflare({ imageService: 'compile'}),
   vite: {
     assetsInclude: "**/*.riv",
   },

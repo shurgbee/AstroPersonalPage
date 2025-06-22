@@ -5,36 +5,68 @@ import { Icon } from "astro-icon/components";
 
 
 <Card colSpan="md:col-span-1" rowSpan="md:row-span-8" title="About me">
-  <div class="flex flex-col gap-2">
+  <div class="flex flex-col gap-2 overflow-auto hidescroll">
     <div class="text-m font-light">
       <style>
         @keyframes rotate{
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
-        li:hover{
-         font-weight: bold;
+        .inline{
+
         }
         .inline:hover{
           animation: rotate 1s ease infinite backwards;
         }
+        .hidescroll::-webkit-scrollbar {
+          display: none;
+        }
+
+        .hidescroll{
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        }
       </style>
       <p class="text-m">
-        Hi, I'm Sragvee, a software developer from Dallas.
-        <br />
-        My primary tools of choice are:
+        Hi, I'm Sragvee Satluri, a software developer from Dallas, TX currently studying at <a href="https://cs.utdallas.edu" target="_blank" class="font-medium hover:underline">UTD</a>. Beyond coding, I'm passionate about game development, 3D modeling and animation, and homelabbing. In my free time, I love to tinker with whatever I have and see what new creations I can come up with.
       </p>
+      <br/>
+    <div class="p-2 pt-4 pb-4 rounded-1vw bg-clip-border bg-blue-200/20 b-2 text-lg">
       <ul class="list-disc list-inside">
-        <li>JavaScript <Icon name="devicon:javascript" class="inline" /></li>
-        <li>React <Icon name="devicon:react" class="inline"/></li>
-        <li>Unity <Icon name="devicon:unity" class="inline" /></li>
-        <li>Astro.js <Icon name="devicon:astro" class="inline" /></li>
-        <li>Next.js <Icon name="devicon:nextjs" class="inline" /></li>
-        <li>Python <Icon name="devicon:python" class="inline" /> </li>
+        <p class="font-bold text-xl">Languages</p>
+        <li class="font-bold">JavaScript <Icon name="devicon:javascript" class="inline" /></li>
+        <li class="font-bold">Python <Icon name="devicon:python" class="inline" /> </li>
+        <li>Typescript <Icon name="devicon:typescript" class="inline"/></li>
+        <li>C# <Icon name="devicon:csharp" class="inline"/></li>
       </ul>
     </div>
-    <p class="text-m font-light">
-      Beyond coding, I'm passionate about game development, 3D modeling and animation, and hardware. In my free time, I love to tinker with whatever I have and see what new creations I can come up with.
-    </p>
-  </div>
+    <div class="mt-2 p-2 pt-4 pb-4 rounded-1vw bg-clip-border bg-blue-300/20 b-2 text-lg">
+      <ul class="list-disc list-inside">
+        <p class="font-bold text-xl">Frontend</p>
+        <li class="font-bold">React <Icon name="devicon:react" class="inline"/></li>
+        <li class="font-bold">Astro.js <Icon name="devicon:astro" class="inline" /></li>
+        <li>Next.js <Icon name="devicon:nextjs" class="inline" /></li>
+        <li>Hugo <Icon name="devicon:hugo" class="inline" /></li>
+      </ul>
+    </div>
+    <div class="mt-2 p-2 pt-4 pb-4 rounded-1vw bg-clip-border bg-blue-400/20 b-2 text-lg">
+      <ul class="list-disc list-inside">
+        <p class="font-bold text-xl">Backend</p>
+        <li class="font-bold">FastAPI <Icon name="devicon:fastapi" class="inline" /></li>
+        <li class="font-bold">SQLite <Icon name="devicon:sqlite" class="inline" /></li>
+        <li>PostgreSQL <Icon name="devicon:postgresql" class="inline" /></li>
+        <li>Flask <Icon name="devicon:flask" class="inline"/></li>
+      </ul>
+    </div>
+    <div class="mt-2 p-2 pt-4 pb-4 rounded-1vw bg-clip-border bg-blue-500/20 b-2 text-lg">
+      <ul class="list-disc list-inside">
+        <p class="font-bold text-xl">Other</p>
+        <li class="font-bold">Cloudflare <Icon name="devicon:cloudflare" class="inline" /></li>
+        <li class="font-bold">VS Code <Icon name="devicon:vscode" class="inline" /></li>
+        <li class="font-bold">Git <Icon name="devicon:git" class="inline" /></li>
+        <li class="font-bold">PNPM <Icon name="devicon:pnpm" class="inline" /></li>
+        <li >Vercel <Icon name="devicon:vercel" class="inline" /></li>
+        <li >Docker <Icon name="devicon:docker" class="inline" /></li>
+      </ul>
+    </div>
 </Card>
