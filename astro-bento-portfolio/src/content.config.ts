@@ -22,7 +22,8 @@ const project = defineCollection({
       name: z.string(),
       github: z.string().optional(),
       technologies: z.array(z.string()).optional(),
-      link: z.string().optional()
+      link: z.string().optional(),
+      draft: z.boolean()
     }),
 });
 export const collections = { blog, project };

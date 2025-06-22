@@ -4,7 +4,8 @@ import ProjectsCard from "./Project/ProjectsCard.astro"
 import { LINKS } from "../lib/constants";
 import { getCollection } from "astro:content";
 
-const projects = (await getCollection("project"))
+const collection = (await getCollection("project"))
+const projects = collection.filter((project) => !project.data.draft)
 ---
 
 <style>
@@ -20,13 +21,13 @@ scrollbar-width: none;
 </style>
 
 <Card colSpan="md:col-span-2" rowSpan="md:row-span-4">
-  <div class="h-full overflow-auto hidescroll">
+  <div class="overflow-auto hidescroll h-full">
     <header class="flex items-center">
-      <h1 class="text-white text-xl font-bold pb-4">
+      <h1 class="text-white text-xl font-bold p2-4">
         Projects
       </h1>
     </header>
-    <div class="grid grid-cols-1 gap-3">
+    <div class="grid grid-cols-1 gap-3 ">
       {projects.map((project) => <ProjectsCard name={project.data.name} 
       github={project.data.github} 
       link={project.data.link} 
