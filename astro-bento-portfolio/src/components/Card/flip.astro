@@ -62,5 +62,9 @@ const { title, body, colSpan, rowSpan, href, colorText, height } = Astro.props;
 
 .flip-card-back {
   transform: rotateY(180deg);
+  position: relative;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
 }
 </style>

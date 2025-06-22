@@ -5,7 +5,6 @@ import IntroCard from "../components/IntroCard.astro";
 import ContactsCard from "../components/ContactsCard.astro";
 import TimeZone from "../components/TimeZoneCard.astro";
 import AboutMe from "../components/AboutMe.astro";
-import Now from "../components/Now.astro";
 import FlippedCard from "../components/Card/flip.astro";
 import Globe from "../components/Globe";
 import { getCollection } from "astro:content";
@@ -51,7 +50,6 @@ const posts = (await getCollection("blog"))?.sort(
     <AboutMe />
     <ContactsCard />
     <TimeZone />
-    <!-- <Now /> -->
     <Card
       colSpan="md:col-span-1"
       rowSpan="md:row-span-2 flex gap-4"
@@ -85,17 +83,19 @@ const posts = (await getCollection("blog"))?.sort(
       </div>
     </Card>
     <FlippedCard
-      colSpan="md:col-span-2"
+      colSpan="md:col-span-1"
       rowSpan="md:row-span-1">
-      <p slot="front" class="bold center">What I'm listening to rn</p>
-    <iframe slot="back" title="spotify embed" src="https://open.spotify.com/embed/track/6Y7SslHFxMnUTAXqbQkAAN?utm_source=generator&theme=0" width="100%" height="md:row-span-1" frameborder={100} allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> 
+    <p slot="front" class="bold center card">What I'm listening to right now</p>
+    <div slot="back" class="w-100% size-80px">
+      <iframe src="https://open.spotify.com/embed/track/13VNbW9gblZQVVM2a7ZQf5?utm_source=generator" width="105%" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
     </FlippedCard> 
-    <Card colSpan="md:col-span-1" rowSpan="md:row-span-1">
+    <Card colSpan="md:col-span-1" rowSpan="md:row-span-1"> 
       <p class="text-xs">
         © {new Date().getFullYear()} · Built with 
         <a href="https://astro.build/"
         target="_blank"
-        class="text-blue-500">Astro🚀<a/> 
+        class="text-blue-500">Astro🚀</a> 
           . Based off of <a
           href="https://github.com/Ladvace/astro-bento-portfolio"
           target="_blank"

@@ -35,6 +35,9 @@ importers:
       '@iconify-json/devicon-plain':
         specifier: ^1.2.10
         version: 1.2.10
+      '@iconify-json/fa6-brands':
+        specifier: ^1.2.5
+        version: 1.2.5
       '@iconify-json/ri':
         specifier: ^1.2.1
         version: 1.2.1
@@ -1043,6 +1046,9 @@ packages:
 
   '@iconify-json/devicon@1.2.11':
     resolution: {integrity: sha512-siDWSFqmPKOYiMvgixqsZ/0rbUXae1M7gF14vefBtFuKXJkTvr4WPzbv1ARc7rqQlkU8XZPyH1edCXO4uToTyw==}
+
+  '@iconify-json/fa6-brands@1.2.5':
+    resolution: {integrity: sha512-U/iFfziz6jSN9zArOJZYTtoj2tQyh6MxPdI8M84DQ2kEulPaj8j+h9bqvjmzszNHmD7v+kmmKd/MLkMKk+3Zuw==}
 
   '@iconify-json/ri@1.2.1':
     resolution: {integrity: sha512-xI3+xZHBI+wlhQqd6jRRcLD5K8B8vQNyxcSB43myxNZ/SfXIn7Ny28h0jyPo9e0gT8fGhqx6R5PeLz/UBB8jwQ==}
@@ -3234,9 +3240,6 @@ packages:
     resolution: {integrity: sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==}
     engines: {node: '>=8'}
 
-  pkg-types@1.2.1:
-    resolution: {integrity: sha512-sQoqa8alT3nHjGuTjuKgOnvjo4cljkufdtLMnO2LBP/wRwuDlo1tkaEdMxCRhyGRPacv/ztlZgDPm2b7FAmEvw==}
-
   pkg-types@1.3.1:
     resolution: {integrity: sha512-/Jm5M4RvtBFVkKWRu2BLUTNP8/M2a+UwuAX+ae4770q1qVGtfjG+WTCupoZixokjmHiry8uI+dlY8KXYV5HVVQ==}
 
@@ -4708,6 +4711,10 @@ snapshots:
       '@iconify/types': 2.0.0
 
   '@iconify-json/devicon@1.2.11':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/fa6-brands@1.2.5':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -6774,7 +6781,7 @@ snapshots:
       h3: 1.13.0
       http-shutdown: 1.2.2
       jiti: 2.4.2
-      mlly: 1.7.2
+      mlly: 1.7.4
       node-forge: 1.3.1
       pathe: 1.1.2
       std-env: 3.8.0
@@ -6793,8 +6800,8 @@ snapshots:
 
   local-pkg@0.5.0:
     dependencies:
-      mlly: 1.7.2
-      pkg-types: 1.2.1
+      mlly: 1.7.4
+      pkg-types: 1.3.1
 
   locate-character@3.0.0: {}
 
@@ -7239,7 +7246,7 @@ snapshots:
     dependencies:
       acorn: 8.14.0
       pathe: 1.1.2
-      pkg-types: 1.2.1
+      pkg-types: 1.3.1
       ufo: 1.5.4
 
   mlly@1.7.4:
@@ -7415,12 +7422,6 @@ snapshots:
   pkg-dir@4.2.0:
     dependencies:
       find-up: 4.1.0
-
-  pkg-types@1.2.1:
-    dependencies:
-      confbox: 0.1.8
-      mlly: 1.7.2
-      pathe: 1.1.2
 
   pkg-types@1.3.1:
     dependencies:
