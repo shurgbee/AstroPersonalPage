@@ -11,18 +11,18 @@
   },
   "dependencies": {
     "-": "^0.0.1",
-    "@astrojs/cloudflare": "^12.2.0",
-    "@astrojs/netlify": "^6.0.1",
-    "@astrojs/rss": "^4.0.10",
-    "@astrojs/sitemap": "^3.2.1",
-    "@astrojs/solid-js": "^5.0.1",
-    "@astrojs/svelte": "^7.0.2",
+    "@astrojs/cloudflare": "^12.6.0",
+    "@astrojs/netlify": "^6.4.0",
+    "@astrojs/rss": "^4.0.12",
+    "@astrojs/sitemap": "^3.4.1",
+    "@astrojs/solid-js": "^5.1.0",
+    "@astrojs/svelte": "^7.1.0",
     "@iconify-json/devicon": "^1.2.11",
     "@iconify-json/devicon-plain": "^1.2.10",
     "@iconify-json/fa6-brands": "^1.2.5",
     "@iconify-json/ri": "^1.2.1",
     "@rive-app/canvas": "^2.21.6",
-    "astro": "^5.1.1",
+    "astro": "^5.10.0",
     "astro-icon": "^1.1.5",
     "astro-robots-txt": "^1.0.0",
     "autoprefixer": "^10.4.20",
@@ -47,6 +47,6 @@
     "sanitize-html": "^2.13.1",
     "typescript": "^5.7.2",
     "unocss": "^0.63.4",
-    "wrangler": "^3.103.2"
+    "wrangler": "^4.20.5"
   }
 }

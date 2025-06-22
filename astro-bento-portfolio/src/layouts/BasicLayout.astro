@@ -10,10 +10,6 @@ interface Props {
 }
 
 const { title, description, page, slug, pubDate } = Astro.props;
-const image =
-  page === "travel"
-    ? `${Astro.url.origin}/globe_preview.webp"`
-    : `${Astro.url.origin}/og-image.png`;
 
 const schema =
   page !== "blog"
@@ -23,8 +19,6 @@ const schema =
         name: "Sragvee",
         url: Astro.url.origin,
         sameAs: [LINKS.linkedin, LINKS.github],
-        //TODO: MUST CHANGE ALL REFERENCES TO OG-IMAGE
-        image: `${Astro.url.origin}/og-image.png`,
         jobTitle: "Freelance Software Developer",
         worksFor: {
           "@type": "Organization",
@@ -49,7 +43,6 @@ const schema =
         },
         headline: title || title,
         description: description || title,
-        image: `${Astro.url.origin}/og-image.png`, //TODO: dynamic
         author: {
           "@type": "Person",
           name: "Sragvee",
@@ -59,10 +52,6 @@ const schema =
         publisher: {
           "@type": "Organization",
           name: "Shurgbee",
-          logo: {
-            "@type": "ImageObject",
-            url: `${Astro.url.origin}/og-image.png`,
-          },
         },
         datePublished: pubDate || new Date().toISOString(),
         dateModified: pubDate || new Date().toISOString(),
@@ -84,18 +73,10 @@ const schema =
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url.origin} />
-    <meta
-      property="og:image"
-      content={image || `${Astro.url.origin}/og-image.png`}
-    />
     <!-- Basic Twitter Card tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta
-      name="twitter:image"
-      content={image || `${Astro.url.origin}/og-image.png`}
-    />
 
     <link rel="preconnect" href="https://cdn.fontshare.com" />
     {
