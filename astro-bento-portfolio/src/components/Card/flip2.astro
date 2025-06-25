@@ -1,0 +1,65 @@
+---
+import { Icon } from "astro-icon/components";
+import Content from "./Content.astro";
+import Card from "./index.astro"
+
+
+interface Props {
+  title?: string;
+  body?: string;
+  colSpan?: string;
+  rowSpan?: string;
+  href?: string;
+  colorText?: string;
+  height?: string;
+  width?: string;
+}
+
+const { title, body, colSpan, rowSpan, href, colorText, height } = Astro.props;
+---
+<!-- 
+If I ever use this flipcard for anything that isn't a gimmick I'll change to add row/col span parsing
+-->
+<div class="flip-card card md:row-span-2 sm:h-auto">
+  <div class="flip-card-inner">
+    <div class="flip-card-front bg-darkslate-500 shadow-lg rounded-lg p-6 border border-darkslate-100 flex flex-col sm:display-none">
+        <slot name="front"/>
+    </div>
+    <div class="flip-card-back">
+      <slot name="back"/>
+    </div>
+  </div>
+</div>
+
+<style>
+.flip-card {
+  perspective: 1000px;
+  width: 100%;
+  height: 100%;
+  min-height: 180px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+</style>
