@@ -1,0 +1,55 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import PostRow from "../components/Blog/PostRow.astro";
+import Card from "../components/Card/index.astro"
+import ProjectsCard from "../components/Project/ProjectsCard.astro";
+
+const posts = (await getCollection("timeline"))?.sort(
+  (blogEntryA, blogEntryB) =>
+    (blogEntryB.data.date || new Date()).getTime() -
+    (blogEntryA.data.date || new Date()).getTime()
+);
+---
+
+<script>
+  import { timeline, type TimelineDefinition } from "motion";
+  import { loaderAnimation } from "../lib/constants";
+
+  const sequence = [loaderAnimation];
+
+  timeline(sequence as TimelineDefinition);
+</script>
+
+<Layout
+  title="Sragvee Satluri - Timeline"
+  description="A timeline of what I've been doing recently"
+>
+  <div class="text-white post sm:m-50px">
+    {posts.map((post) => 
+  <div class={"relative px-10px py-2vh w-50% md:max-w-3xl" + " " + (posts.indexOf(post) % 2 == 1 ? "left-50%" : "left-0%") + " " + "max-sm:left-20px max-sm:w-95%"}>
+      <Card>
+        {post.body}
+      </Card>
+    </div>)}
+  </div>
+  <style>
+    .post::after{
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 100%;
+      background: #fff;
+      top: 0;
+      left: 50%;
+      margin-left: -3px;
+      z-index: -1;
+    }
+    @media screen and (max-width:640px){
+      .post::after{
+        left:15px
+      }
+    }
+    }
+  </style>
+</Layout>
