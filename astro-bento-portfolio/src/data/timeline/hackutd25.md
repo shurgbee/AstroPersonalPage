@@ -7,4 +7,4 @@ links: ["https://github.com/shurgbee/eeko-ewaste"]
 draft: false
 ---
 
-Competed in the NTHS Hack 2025 Hackathon, eventually doing something idk
+Competed in the NTHS Hack 2025 Hackathon creating Eeko, a website that creates an end-to-end flow to donate, process, and recycle e-waste. This project won the "Best E-waste Project" award at the hackathon.
