@@ -32,8 +32,10 @@ const timeline = defineCollection({
     schema: z.object({
       event: z.string(),
       imageUrl: z.string().optional(),
-      date: z.coerce.date(),
-      links: z.array(z.string()).optional()
+      startDate: z.coerce.date(),
+      endDate: z.coerce.date(),
+      links: z.array(z.string()).optional(),
+      draft: z.boolean()
     }),
 });
 export const collections = { blog, project, timeline };

@@ -1,8 +1,8 @@
 ---
 event: Wize Academy 
-imageUrl: "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/003/294/995/datas/medium.JPG" 
-date: 03-09-2025
-links: ["https://devpost.com/software/eeko","https://github.com/shurgbee/eeko-ewaste"]
+startDate: 06-01-2021
+endDate: 06-27-2025
+links: ["https://www.wizeacademy.com/"]
+draft: false
 ---
-
-Taught Kids Roblox
+Educated children aged 5-13 on various technological skills like programming in Python, Roblox game development in Lua, and VEX Robotics through a "learning through play" strategy.
