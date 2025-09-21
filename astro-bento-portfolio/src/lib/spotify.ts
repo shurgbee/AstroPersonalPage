@@ -1,13 +1,15 @@
-const clientId = 'YOUR_SPOTIFY_CLIENT_ID';
-const clientSecret = 'YOUR_SPOTIFY_CLIENT_SECRET';
-const refreshToken = 'YOUR_SPOTIFY_REFRESH_TOKEN';
+const clientId = import.meta.env.SPOTIFY_CLIENT_ID;
+const clientSecret = import.meta.env.SPOTIFY_CLIENT_SECRET;
+const refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN;
 
 async function getAccessToken() {
+    const basic = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
+    
     const response = await fetch('https://accounts.spotify.com/api/token', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': 'Basic ' + Buffer.from(clientId + ':' + clientSecret).toString('base64')
+            'Authorization': `Basic ${basic}`
         },
         body: new URLSearchParams({
             grant_type: 'refresh_token',
@@ -16,10 +18,13 @@ async function getAccessToken() {
     });
 
     const data = await response.json();
+    if (data.error) {
+        throw new Error(`Failed to get access token: ${data.error}`);
+    }
     return data.access_token;
 }
 
-async function getCurrentlyPlayingSongUrl() {
+export async function getCurrSong() {
     const accessToken = await getAccessToken();
 
     const response = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
@@ -28,6 +33,7 @@ async function getCurrentlyPlayingSongUrl() {
         }
     });
 
+    console.log(response);
     if (response.status === 204 || response.status > 400) {
         return 'No song is currently playing.';
     }
@@ -35,5 +41,3 @@ async function getCurrentlyPlayingSongUrl() {
     const data = await response.json();
     return data.item.external_urls.spotify;
 }
-
-getCurrentlyPlayingSongUrl().then(url => console.log(url)).catch(err => console.error(err));
