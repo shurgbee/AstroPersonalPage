@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import { getSpotifyStatus } from "../lib/spotify.ts";
+import {Image} from "astro:assets"
 
 let spotifyData = null;
 let error = null;
@@ -54,10 +55,13 @@ function formatTimestamp(timestamp: string) {
                         rel="noopener noreferrer"
                         class="block hover:scale-95 transition-transform duration-200"
                     >
-                        <img 
+                        <Image 
                             src={spotifyData.track.album.images[0].url} 
                             alt={`${spotifyData.track.album.name} cover`}
-                            class="w-[96px] h-[96px] object-cover rounded-xl"
+                            width="96"
+                            height="96"
+                            loading="lazy"
+                            class="object-cover rounded-xl"
                         />
                     </a>
                 ) : (
