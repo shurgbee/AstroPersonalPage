@@ -24,6 +24,24 @@ async function getAccessToken() {
     return data.access_token;
 }
 
+export async function getRecentlyPlayed() {
+    const accessToken = await getAccessToken();
+
+    const response = await fetch('https://api.spotify.com/v1/me/player/recently-played?limit=1', {
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        }
+    });
+
+    if (response.status !== 200) {
+        throw new Error(`Failed to get recently played tracks: ${response.status}`);
+    }
+
+    const data: any = await response.json();
+    console.log(data);
+    return data.items[0]; // Return the most recent track
+}
+
 export async function getCurrSong() {
     const accessToken = await getAccessToken();
 
@@ -33,11 +51,41 @@ export async function getCurrSong() {
         }
     });
 
-    console.log(response);
     if (response.status === 204 || response.status > 400) {
-        return 'No song is currently playing.';
+        return null; // Return null instead of string for easier handling
     }
 
     const data = await response.json();
-    return data.item.external_urls.spotify;
+    return data;
+}
+
+export async function getSpotifyStatus() {
+    try {
+        const currentSong = await getCurrSong();
+        console.log(currentSong.item.explicit);
+        if (currentSong && currentSong.is_playing) {
+            return {
+                isPlaying: true,
+                track: currentSong.item,
+                progress_ms: currentSong.progress_ms,
+                timestamp: new Date().toISOString()
+            };
+        } else {
+            // Get the most recently played track
+            const recentTrack = await getRecentlyPlayed();
+            return {
+                isPlaying: false,
+                track: recentTrack.track,
+                played_at: recentTrack.played_at,
+                timestamp: new Date().toISOString()
+            };
+        }
+    } catch (error) {
+        console.error('Error getting Spotify status:', error);
+        return {
+            isPlaying: false,
+            error: 'Failed to load Spotify data',
+            timestamp: new Date().toISOString()
+        };
+    }
 }

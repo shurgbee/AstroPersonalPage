@@ -1,14 +1,129 @@
 ---
-import { getCurrSong } from "../lib/spotify.ts";
-getCurrSong().then(url => console.log(url)).catch(err => console.error(err));
+import { Icon } from "astro-icon/components";
+import { getSpotifyStatus } from "../lib/spotify.ts";
+
+let spotifyData = null;
+let error = null;
+
+try {
+    spotifyData = await getSpotifyStatus();
+    console.log(spotifyData);
+} catch (err) {
+    error = err;
+    console.error('Failed to load Spotify data:', err);
+}
+
+function formatTime(ms: number) {
+    const minutes = Math.floor(ms / 60000);
+    const seconds: number = ((ms % 60000) / 1000).toFixed(0);
+    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+}
+
+function formatTimestamp(timestamp: string) {
+    const date = new Date(timestamp);
+    const now = new Date();
+    const diff = now.getTime() - date.getTime();
+    
+    if (diff < 60000) { // Less than 1 minute
+        return 'just now';
+    } else if (diff < 3600000) { // Less than 1 hour
+        const minutes = Math.floor(diff / 60000);
+        return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+    } else if (diff < 86400000) { // Less than 24 hours
+        const hours = Math.floor(diff / 3600000);
+        return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+    } else {
+        return date.toLocaleDateString();
+    }
+}
 ---
-<div class="flex flex-col">
-    <div class="flex flex-row">
-        <div>
-            Image
-        </div>
-        <div>
-            Text
-        </div>
-    </div>
-</div>
+    {error ? (
+        <p>
+            Something broke :(
+        </p>
+        <img src="/uhoh.png"
+        class="w-[96px] h-[96px] inline rounded-xl">
+        </img>
+    ) : spotifyData ? (
+        <div class="flex flex-row -ml-2 -mt-2">
+            <div class="w-[96px] h-[96px] flex-shrink-0">
+                {spotifyData.track?.album?.images?.[0]?.url ? (
+                    <a 
+                        href={spotifyData.track.album.external_urls?.spotify} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        class="block hover:scale-95 transition-transform duration-200"
+                    >
+                        <img 
+                            src={spotifyData.track.album.images[0].url} 
+                            alt={`${spotifyData.track.album.name} cover`}
+                            class="w-[96px] h-[96px] object-cover rounded-xl"
+                        />
+                    </a>
+                ) : (
+                    <div class="w-[96px] h-[96px] rounded-xl bg-stone-700 animate-pulse flex items-center justify-center">
+                    </div>
+                )}
+            </div>
+            <div class="flex flex-col min-w-0 pl-2">
+                    {spotifyData.isPlaying ? (
+                        <div class="flex items-center space-x-1">
+                            <span class="relative">
+                                <div class="absolute w-2 h-2 bg-green-500 rounded-full animate-ping"></div>
+                                <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            </span>
+                            <span class="text-sm text-green-500 font-medium">Listening to...</span>
+                        </div>
+                    ) : (
+                        <div class="flex items-center space-x-1">
+                            <div class="w-2 h-2 bg-gray-500 rounded-full"></div>
+                            <span class="text-sm text-gray-400">
+                                {spotifyData.played_at ? 
+                                    `Last played ${formatTimestamp(spotifyData.played_at)}` : 
+                                    'Recently played'
+                                }
+                            </span>
+                        </div>
+                    )}
+                <a 
+                    href={spotifyData.track?.external_urls?.spotify}
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="text-xl font-bold text-white truncate hover:text-green-400 transition-colors duration-200"
+                >
+                    {spotifyData.track?.name || 'Unknown Track'}
+                </a>
+                
+                <p class="text-sm text-gray-400 truncate">
+                    {spotifyData.track?.artists?.map((artist: any) => artist.name).join(', ') || 'Unknown Artist'}
+                </p>
+                
+            </div>
+            
+                
+            </div>
+            <!-- Progress Bar (only show if currently playing) -->
+            {spotifyData.isPlaying && spotifyData.progress_ms && spotifyData.track?.duration_ms && (
+                <div class="mt-3">
+                    <div class="flex justify-between text-xs text-gray-400 mb-1">
+                        <span>{formatTime(spotifyData.progress_ms)}</span>
+                        <span>{formatTime(spotifyData.track.duration_ms)}</span>
+                    </div>
+                    <div class="w-full bg-gray-800 rounded-full h-1">
+                        <div 
+                            class="bg-green-500 h-1 rounded-full transition-all duration-1000" 
+                            style={`width: ${(spotifyData.progress_ms / spotifyData.track.duration_ms) * 100}%`}
+                        ></div>
+                    </div>
+                </div>
+            )}
+    ) : (
+        <>
+        <p>
+            Something broke :(
+        </p>
+        <img src="/uhoh.png"
+        class="w-[96px] h-[96px] inline rounded-xl">
+        </img>
+        </>
+    )}

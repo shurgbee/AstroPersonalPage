@@ -51,19 +51,9 @@ import { Icon } from "astro-icon/components";
     >
     <div class="-z-10 w-full h-full"></div>
     </Card>
-      <FlippedCard
-        colSpan="md:col-span-1"
-        rowSpan="md:row-span-2">
-        <div slot="front">
-          <p class="font-bold card text-align-center"> What I'm listening to</p>
-          <div class="text-align-center grid pt-4">
-            <Icon name="fa6-brands:spotify" class="text-7xl place-self-center"/>
-          </div>
-        </div>
-      <div slot="back" class="w-100% h-100% size-80px">
-        <Spotify/>
-      </div>
-      </FlippedCard> 
+    <Card colSpan="md:col-span-1" rowSpan="md:row-span-2">
+        <Spotify server:defer/>
+    </Card>
     <Card colSpan="md:col-span-1" rowSpan="md:row-span-1"> 
       <p class="text-xs">
         © {new Date().getFullYear()} · Built with 
