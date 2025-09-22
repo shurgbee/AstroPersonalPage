@@ -3,7 +3,7 @@ const clientSecret = import.meta.env.SPOTIFY_CLIENT_SECRET;
 const refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN;
 
 async function getAccessToken() {
-  const basic = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
+  const basic = btoa(`${clientId}:${clientSecret}`)
 
   const response = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
