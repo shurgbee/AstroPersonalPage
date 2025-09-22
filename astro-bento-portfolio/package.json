@@ -44,6 +44,7 @@
     "autoprefixer": "^10.4.20",
     "markdown-it": "^14.1.0",
     "motion": "^10.18.0",
+    "prettier": "3.6.2",
     "sanitize-html": "^2.13.1",
     "typescript": "^5.7.2",
     "unocss": "^0.63.4",

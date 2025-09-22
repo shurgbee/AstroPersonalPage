@@ -3,7 +3,7 @@ export const LINKS = {
   linkedin: "https://www.linkedin.com/in/sragvee-satluri-32b36a345/",
   email: "seragvee@gmail.com",
   instagram: "https://www.instagram.com/sragveesatluri/",
-  itchio: "https://shurgbee.itch.io/"
+  itchio: "https://shurgbee.itch.io/",
 };
 
 export const loaderAnimation = [

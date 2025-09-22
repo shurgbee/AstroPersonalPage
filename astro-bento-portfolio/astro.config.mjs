@@ -12,17 +12,12 @@ import cloudflare from "@astrojs/cloudflare";
 // https://astro.build/config
 export default defineConfig({
   site: "https://shurgbee.dev/",
-  integrations: [
-    sitemap(),
-    UnoCSS({ injectReset: true }),
-    icon(),
-    svelte(),
-  ],
+  integrations: [sitemap(), UnoCSS({ injectReset: true }), icon(), svelte()],
   markdown: {
     remarkPlugins: [remarkReadingTime],
   },
   output: "server",
-  adapter: cloudflare({ imageService: 'compile'}),
+  adapter: cloudflare({ imageService: "compile" }),
   vite: {
     assetsInclude: "**/*.riv",
   },

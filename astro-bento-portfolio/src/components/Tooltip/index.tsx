@@ -8,7 +8,7 @@ function Tooltip(props: Props) {
   const [isVisible, setIsVisible] = createSignal(false);
   const [clickCount, setClickCount] = createSignal(0);
 
-const messages = [
+  const messages = [
     "The first computer programmer was Ada Lovelace in the 1840s.",
     "The first computer virus was created in 1986 and called Brain.",
     "The term 'debugging' comes from removing a moth from a computer.",
@@ -27,9 +27,8 @@ const messages = [
     "Java was originally named 'Oak' after a tree outside James Gosling's office.",
     "HTML stands for 'HyperText Markup Language.'",
     "The first gaming console, the Magnavox Odyssey, was released in 1972.",
-    "Linux, an open-source OS, was created by Linus Torvalds in 1991."
-];
-
+    "Linux, an open-source OS, was created by Linus Torvalds in 1991.",
+  ];
 
   const currentMessage = () => {
     const count = clickCount();

@@ -37,12 +37,15 @@ export function formatDate(date: Date): string {
   });
 }
 
-export async function getSpotifyCurrentlyListeningSong(): Promise<string>{
-  const response = await fetch("https://api.spotify.com/v1/me/player/currently-playing", {
-    headers: {
-      Authorization: `Bearer ${process.env.SPOTIFY_ACCESS_TOKEN}`,
+export async function getSpotifyCurrentlyListeningSong(): Promise<string> {
+  const response = await fetch(
+    "https://api.spotify.com/v1/me/player/currently-playing",
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.SPOTIFY_ACCESS_TOKEN}`,
+      },
     },
-  });
+  );
 
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
@@ -50,4 +53,4 @@ export async function getSpotifyCurrentlyListeningSong(): Promise<string>{
 
   const data = await response.json();
   return data.item.name;
-};
+}

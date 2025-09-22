@@ -3,5 +3,5 @@
   "name": "shurgbee-astro-portfolio",
   // Update to today's date
   "compatibility_date": "2025-09-02",
-  "pages_build_output_dir": "./dist"
+  "pages_build_output_dir": "./dist",
 }

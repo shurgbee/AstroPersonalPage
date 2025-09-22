@@ -5,7 +5,7 @@ pubDate: 2023-01-21
 category: "intro"
 draft: false
 project: "Gooba"
-technologies: ["Next.js","Unity"]
+technologies: ["Next.js", "Unity"]
 ---
 
 # Hi there!
