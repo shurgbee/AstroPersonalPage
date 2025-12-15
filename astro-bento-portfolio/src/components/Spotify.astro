@@ -80,7 +80,7 @@ function formatTimestamp(timestamp: string) {
                         </div>
                     ) : (
                         <div class="flex items-center space-x-1">
-                            <div class="w-2 h-2 bg-gray-500 rounded-full"></div>
+                            <div class="size-8px flex-none bg-gray-500 rounded-full"></div>
                             <span class="text-sm text-gray-400">
                                 {spotifyData.played_at ? 
                                     `Last played ${formatTimestamp(spotifyData.played_at)}` : 

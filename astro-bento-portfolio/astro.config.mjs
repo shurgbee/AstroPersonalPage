@@ -16,7 +16,7 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkReadingTime],
   },
-  output: "server",
+  output: "static",
   adapter: cloudflare({ imageService: "compile" }),
   vite: {
     assetsInclude: "**/*.riv",
