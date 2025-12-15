@@ -68,7 +68,7 @@ export async function getCurrSong() {
 export async function getSpotifyStatus() {
   try {
     const currentSong = await getCurrSong();
-    console.log(currentSong.item.explicit);
+    // console.log("Current Song: ",currentSong);
     if (currentSong && currentSong.is_playing) {
       return {
         isPlaying: true,

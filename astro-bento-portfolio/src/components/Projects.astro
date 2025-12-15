@@ -5,7 +5,7 @@ import { LINKS } from "../lib/constants";
 import { getCollection } from "astro:content";
 
 const collection = (await getCollection("project"))
-const projects = collection.filter((project) => !project.data.draft)
+const projects = collection.filter((project) => !project.data.draft).sort((a,b) => b.data.rank - a.data.rank);
 ---
 
 <style>
@@ -31,9 +31,9 @@ scrollbar-width: none;
       {projects.map((project) => <ProjectsCard name={project.data.name} 
       github={project.data.github} 
       link={project.data.link} 
-      technologies={project.data.technologies}>
-        {project.body}
-      </ProjectsCard>)}
+      technologies={project.data.technologies}
+      blurb={project.body}
+      />)}
     </div>
   </div>
 </Card>

@@ -23,6 +23,7 @@ const project = defineCollection({
     technologies: z.array(z.string()).optional(),
     link: z.string().optional(),
     draft: z.boolean(),
+    rank: z.number(),
   }),
 });
 
